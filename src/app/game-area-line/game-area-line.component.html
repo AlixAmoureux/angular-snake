@@ -1,0 +1,6 @@
+<div *ngFor="let line of size; let x = index;" class="line">
+    <div class="box">
+        <app-box-empty *ngIf="!(x === snakeHead[0] && y === snakeHead[1])"></app-box-empty>
+        <app-box-snake-head *ngIf="x === snakeHead[0] && y === snakeHead[1]"></app-box-snake-head>
+    </div>
+</div>
