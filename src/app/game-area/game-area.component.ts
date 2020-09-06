@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Observable, interval } from 'rxjs';
+import { interval } from 'rxjs';
+import { Coordinate } from '../snake-position-service';
 
 export enum KEY_CODE {
   LEFT_ARROW = 37,
@@ -25,53 +26,83 @@ export enum DIRECTION {
 export class GameAreaComponent implements OnInit {
 
   public size = new Array<number>(30);
-  public snakeHead: number[] = [0, 0];
   public direction: DIRECTION = DIRECTION.RIGHT;
   public incrementPosition;
+  public y = 0;
+  public snakeCoordinates: Coordinate[];
+  public foodCoordinates: Coordinate = new Coordinate();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.setCoordinates();
+  }
 
+  setCoordinates() {
+    this.snakeCoordinates = [{ x: 0, y: 0 }];
+    this.setNewFoodCoordinates();
+  }
+
+  setNewFoodCoordinates() {
+    this.foodCoordinates.x = Math.round(Math.random() * (31));
+    this.foodCoordinates.y = Math.round(Math.random() * (31));
+    if (this.foodCoordinates.x > this.size.length) {
+      this.foodCoordinates.x = 0;
+    }
+    if (this.foodCoordinates.y > this.size.length) {
+      this.foodCoordinates.y = 0;
+    }
   }
 
   /**
-   * Replace the head of the snake
-   */
+  * Replace the head of the snake
+  */
   manageBorder() {
-    if ((this.snakeHead[0] === 0) && (this.direction === DIRECTION.LEFT))
-      this.snakeHead[0] = this.size.length - 1;
-    if ((this.snakeHead[0] === this.size.length - 1) && (this.direction === DIRECTION.RIGHT))
-      this.snakeHead[0] = 0;
-    if ((this.snakeHead[1] === 0) && (this.direction === DIRECTION.TOP))
-      this.snakeHead[1] = this.size.length - 1;
-    if ((this.snakeHead[1] === this.size.length - 1) && (this.direction === DIRECTION.BOTTOM))
-      this.snakeHead[1] = 0;
+    if ((this.snakeCoordinates[0].x === -1) && (this.direction === DIRECTION.LEFT))
+      this.snakeCoordinates[0].x = this.size.length - 1;
+    if ((this.snakeCoordinates[0].x === this.size.length) && (this.direction === DIRECTION.RIGHT))
+      this.snakeCoordinates[0].x = 0;
+    if ((this.snakeCoordinates[0].y === -1) && (this.direction === DIRECTION.TOP))
+      this.snakeCoordinates[0].y = this.size.length - 1;
+    if ((this.snakeCoordinates[0].y === this.size.length) && (this.direction === DIRECTION.BOTTOM))
+      this.snakeCoordinates[0].y = 0;
   }
 
   /**
-   * Get the key up event
-   * @param event 
+   * Is snake eating food ?
+   * If yes, a new location is created for the food and the snake is drowing up
    */
+  isSnakeEatingFood() {
+    if ((this.snakeCoordinates[0].x === this.foodCoordinates.x) && this.snakeCoordinates[0].y === this.foodCoordinates.y) {
+      this.setNewFoodCoordinates();
+    }
+  }
+
+  /**
+ * Get the key up event
+ * @param event 
+ */
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event.keyCode);
     if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
-      this.snakeHead[0]++;
+      this.snakeCoordinates[0].x++;
       this.direction = DIRECTION.RIGHT;
     }
     if (event.keyCode === KEY_CODE.LEFT_ARROW) {
-      this.snakeHead[0]--;
+      this.snakeCoordinates[0].x--;
       this.direction = DIRECTION.LEFT;
     }
     if (event.keyCode === KEY_CODE.TOP_ARROW) {
-      this.snakeHead[1]--;
+      this.snakeCoordinates[0].y--;
       this.direction = DIRECTION.TOP;
     }
     if (event.keyCode === KEY_CODE.BOTTOM_ARROW) {
-      this.snakeHead[1]++;
+      this.snakeCoordinates[0].y++;
       this.direction = DIRECTION.BOTTOM;
     }
+    this.manageBorder();
+    this.isSnakeEatingFood();
     if (event.keyCode === KEY_CODE.ESCAPE) {
       this.stopGame();
     }
@@ -79,29 +110,35 @@ export class GameAreaComponent implements OnInit {
       this.beginGame();
     }
   }
-  
-/**
- * Stop the game
- */
+
+  /**
+   * Stop the game
+   */
   stopGame() {
     this.incrementPosition.unsubscribe();
   }
 
   /**
- * Begin the game and automatically move the snake
- */
+  * Begin the game and automatically move the snake
+  */
   beginGame() {
-    this.incrementPosition = interval(100).subscribe(n => {
+    this.incrementPosition = interval(150).subscribe(n => {
+      let x: number = this.snakeCoordinates[0].x;
+      let y: number = this.snakeCoordinates[0].y;
       if (this.direction === DIRECTION.LEFT)
-        this.snakeHead[0]--;
-      else if (this.direction === DIRECTION.RIGHT)
-        this.snakeHead[0]++;
-      else if (this.direction === DIRECTION.BOTTOM)
-        this.snakeHead[1]++;
-      else if (this.direction === DIRECTION.TOP)
-        this.snakeHead[1]--;
-
+        this.snakeCoordinates[0].x--;
+      if (this.direction === DIRECTION.RIGHT)
+        this.snakeCoordinates[0].x++;
+      if (this.direction === DIRECTION.BOTTOM)
+        this.snakeCoordinates[0].y++;
+      if (this.direction === DIRECTION.TOP)
+        this.snakeCoordinates[0].y--;
       this.manageBorder();
+      this.isSnakeEatingFood(); 
     });
+  }
+
+  trackByFn(index, item) {
+    this.y = index;
   }
 }

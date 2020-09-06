@@ -9,6 +9,7 @@ import { BoxFoodComponent } from './box-food/box-food.component';
 import { BoxWallComponent } from './box-wall/box-wall.component';
 import { BoxSnakeBodyComponent } from './box-snake-body/box-snake-body.component';
 import { BoxSnakeHeadComponent } from './box-snake-head/box-snake-head.component';
+import { SnakePositionService } from './snake-position-service';
 
 @NgModule({
   declarations: [

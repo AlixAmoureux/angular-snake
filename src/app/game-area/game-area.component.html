@@ -1,5 +1,5 @@
-<div *ngFor="let box of size; let y = index">
-    <app-game-area-line [size]="size" [y]="y" [snakeHead]="snakeHead"></app-game-area-line>
+<div *ngFor="let box of size; index as y; trackBy: trackByFn">
+    <app-game-area-line [size]="size" [y]="y" [snakeCoordinates]="snakeCoordinates" [foodCoordinates]="foodCoordinates" class="line"></app-game-area-line>
 </div>
 
 <button mat-stroked-button color="warn" (click)="beginGame()">Begin</button>
