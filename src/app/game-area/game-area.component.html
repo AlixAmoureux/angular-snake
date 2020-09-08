@@ -1,5 +1,23 @@
-<div *ngFor="let box of size; index as y; trackBy: trackByFn">
-    <app-game-area-line [size]="size" [y]="y" [snakeCoordinates]="snakeCoordinates" [foodCoordinates]="foodCoordinates" class="line"></app-game-area-line>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
 
-<button mat-stroked-button color="warn" (click)="beginGame()">Begin</button>
+            <div *ngFor="let box of size; index as y; trackBy: trackByFn">
+                <app-game-area-line [size]="size" [y]="y" [snakeCoordinates]="snakeCoordinates"
+                    [foodCoordinates]="foodCoordinates" class="line"></app-game-area-line>
+            </div>
+
+            <button (click)="beginGame()" mat-fab color="primary">
+                <mat-icon>Begin</mat-icon>
+            </button>
+
+        </div>
+
+        <div class="col-md-4">
+            <div *ngFor="let coordSnake of snakeCoordinates">
+                <p>X : {{coordSnake.x}} / Y : {{coordSnake.y}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <button mat-stroked-button color="warn" (click)="beginGame()">Begin</button> -->

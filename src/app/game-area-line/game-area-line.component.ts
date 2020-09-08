@@ -19,7 +19,7 @@ export class GameAreaLineComponent implements OnInit {
     this._y = tmpY;
   }
 
-  public _snakePos: Coordinate[];
+  private _snakePos: Coordinate[];
   @Input("snakeCoordinates")
   get snakePos(): Coordinate[] {
     return this._snakePos;
@@ -28,7 +28,7 @@ export class GameAreaLineComponent implements OnInit {
     this._snakePos = tmpSnakePos;
   }
 
-  public _foodCoordinates: Coordinate;
+  private _foodCoordinates: Coordinate;
   @Input("foodCoordinates")
   get foodCoordinates(): Coordinate {
     return this._foodCoordinates;
@@ -40,5 +40,32 @@ export class GameAreaLineComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  displayFood(x: number): boolean {
+    if ((this._foodCoordinates.x === x) && (this._foodCoordinates.y === this._y))
+      return true;
+    return false;
+  }
+
+  displaySnakeHead(x: number): boolean {
+    if ((this._snakePos[0].x === x) && (this._snakePos[0].y === this._y))
+      return true;
+    return false;
+  }
+
+  displaySnakeBody(x: number): boolean {
+    let display: boolean = false;
+    this._snakePos.forEach(snakePos => {
+      if ((snakePos.x === x) && (snakePos.y === this._y))
+        display = true;
+    });
+    return display;
+  }
+
+  displayEmptyBox(x: number): boolean {
+    if (!this.displayFood(x) && !this.displaySnakeHead(x) && !this.displaySnakeBody(x))
+      return true;
+    return false;
   }
 }
