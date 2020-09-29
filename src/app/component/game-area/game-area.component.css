@@ -1,0 +1,14 @@
+.line {
+    display: flex;
+}
+
+#snake_game
+{
+    background-image: url("./../../../assets/img/nature.jpg");
+    width: fit-content;
+}
+
+#my_container
+{
+    margin : 20px;
+}

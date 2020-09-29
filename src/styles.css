@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.rotate_to_left
+{
+    transform: rotate(270deg);
+}
+
+.rotate_to_right
+{
+    transform: rotate(90deg);
+}
+
+.rotate_to_top
+{
+    transform: rotate(0deg);
+}
+
+.rotate_to_bottom
+{
+    transform: rotate(180deg);
+}
+
+.box_size
+{
+    width : 25px;
+    height: 25px;
+}
+
+.max_height_width
+{
+    width: 100%;
+    height: 100%;
+}

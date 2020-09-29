@@ -1,0 +1,15 @@
+<div *ngFor="let line of size_width; let x = index;" class="line-box">
+    <app-box-food *ngIf="displayFood(x)"></app-box-food>
+    <app-box-snake-head *ngIf="displaySnakeHead(x)" [direction]="_direction">
+    </app-box-snake-head>
+
+
+    <!--     <app-box-snake-body *ngIf="displaySnakeBody(x)" [ngClass]="{'rotate_to_right' : _direction === Direction.LEFT || _direction === Direction.RIGHT}" [direction]="_direction"></app-box-snake-body>
+ -->
+
+
+    <div *ngIf="displaySnakeBody(x)" class="max_height_width">
+        <app-box-snake-body [direction]="_direction"></app-box-snake-body>
+    </div>
+    <app-box-empty *ngIf="displayEmptyBox(x)"></app-box-empty>
+</div>

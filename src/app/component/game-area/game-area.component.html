@@ -1,0 +1,25 @@
+<div id="my_container">
+    <div class="row">
+        <div class="col-md-10">
+            <div id="snake_game">
+                <div *ngFor="let box of size_height; index as y; trackBy: trackByFn">
+                    <app-game-area-line [size_width]="size_width" [y]="y" [direction]="direction" [snakeCoordinates]="snakeCoordinates"
+                        [foodCoordinates]="foodCoordinates" class="line"></app-game-area-line>
+                </div>
+            </div>
+            <button *ngIf="canShowSpecificButton(0)" (click)="pauseGame()" mat-fab color="primary">
+                <mat-icon>Pause</mat-icon>
+            </button>
+            <button *ngIf="canShowSpecificButton(1)" (click)="beginGame()" mat-fab color="primary">
+                <mat-icon>Begin</mat-icon>
+            </button>
+        </div>
+
+        <div class="col-md-2">
+<!--              <div *ngFor="let coordSnake of snakeCoordinates">
+                <p>X : {{coordSnake.x}} / Y : {{coordSnake.y}} / Horizontal : {{coordSnake.horizontal}}</p>
+            </div> -->
+            <p>Your score is : {{score}}</p>
+        </div>
+    </div>
+</div>

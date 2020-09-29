@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Coordinate } from '../snake-position-service';
+import { CELL } from '../../object/Coordinate';
+import { DIRECTION } from '../../object/Direction';
 
 @Component({
   selector: 'app-game-area-line',
@@ -8,8 +9,10 @@ import { Coordinate } from '../snake-position-service';
 })
 export class GameAreaLineComponent implements OnInit {
 
-  @Input("size") size: number;
+  @Input("size_width") size_width: number;
 
+  public Direction = DIRECTION;
+  
   public _y: number;
   @Input("y")
   get y(): number {
@@ -19,18 +22,27 @@ export class GameAreaLineComponent implements OnInit {
     this._y = tmpY;
   }
 
-  private _snakePos: Coordinate[];
+  public _direction: DIRECTION;
+  @Input("direction")
+  get direction(): DIRECTION {
+    return this._direction;
+  }
+  set direction(tmpDirection: DIRECTION) {
+    this._direction = tmpDirection;
+  }
+
+  private _snakePos: CELL[];
   @Input("snakeCoordinates")
-  get snakePos(): Coordinate[] {
+  get snakePos(): CELL[] {
     return this._snakePos;
   }
   set snakePos(tmpSnakePos) {
     this._snakePos = tmpSnakePos;
   }
 
-  private _foodCoordinates: Coordinate;
+  private _foodCoordinates: CELL;
   @Input("foodCoordinates")
-  get foodCoordinates(): Coordinate {
+  get foodCoordinates(): CELL {
     return this._foodCoordinates;
   }
   set foodCoordinates(tmpFoodPos) {
@@ -56,8 +68,8 @@ export class GameAreaLineComponent implements OnInit {
 
   displaySnakeBody(x: number): boolean {
     let display: boolean = false;
-    this._snakePos.forEach(snakePos => {
-      if ((snakePos.x === x) && (snakePos.y === this._y))
+    this._snakePos.forEach((snakePos : CELL, index : number) => {
+      if ((index > 0) && ((snakePos.x === x) && (snakePos.y === this._y)))
         display = true;
     });
     return display;
@@ -68,4 +80,11 @@ export class GameAreaLineComponent implements OnInit {
       return true;
     return false;
   }
+
+/*   displayHorizontal(x : number)
+  {
+    let cell : CELL  = this._snakePos.find(tmpCell => ((tmpCell.x === x) && (tmpCell.y === this._y)));
+//    console.log(cell);
+    return (cell.horizontal);
+  } */
 }
