@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CELL } from '../../object/Coordinate';
+import { CELL } from '../../object/Cell';
 import { DIRECTION } from '../../object/Direction';
 
 @Component({

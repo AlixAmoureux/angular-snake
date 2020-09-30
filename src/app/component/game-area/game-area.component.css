@@ -2,13 +2,37 @@
     display: flex;
 }
 
-#snake_game
-{
+#snake_game {
     background-image: url("./../../../assets/img/nature.jpg");
     width: fit-content;
 }
 
-#my_container
+#my_container {
+    margin: 20px;
+}
+
+.card_flex {
+    display: flex;
+}
+
+.card_menu
 {
-    margin : 20px;
+    margin: 10px;
+    width: 25%;
+    background-color: rgb(7, 6, 6);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.card_flex .card_menu:hover
+{
+    cursor : pointer;
+    background-color: rgb(131, 153, 226);
+}
+
+.card_flex mat-card-header, .card_flex mat-card-content
+{
+    text-align: center;
+    color : white;
+    font-weight: bold;
 }

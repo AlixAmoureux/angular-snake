@@ -1,0 +1,25 @@
+.card_panel
+{
+    width: 90% !important;
+    text-align: left !important;
+    color : white;
+}
+
+.card_panel span
+{
+    width: max-content;
+}
+
+.card_panel mat-card-title
+{
+    text-align: center;
+}
+
+.card_menu
+{
+    margin: 10px;
+    width: 25%;
+    background-color: rgb(7, 6, 6);
+    margin-bottom: 20px;
+    opacity: 0.5;
+}

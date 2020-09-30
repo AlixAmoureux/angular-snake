@@ -12,6 +12,8 @@ import { BoxSnakeHeadComponent } from './component/box-snake-head/box-snake-head
 import { MaterialModule } from './material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SnakeBodyComponent } from './component/box-snake-body/snake-body/snake-body.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LateralPanelComponent } from './component/lateral-panel/lateral-panel.component'; 
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { SnakeBodyComponent } from './component/box-snake-body/snake-body/snake-
     BoxSnakeBodyComponent,
     BoxSnakeHeadComponent,
     SnakeBodyComponent,
+    LateralPanelComponent,
   ],
   imports: [
     BrowserModule,
     MaterialModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

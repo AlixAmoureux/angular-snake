@@ -1,25 +1,43 @@
 <div id="my_container">
+    <div class="card_flex">
+        <mat-card (click)="level = _LEVEL.EASY; initVariables();" class="card_menu">
+            <mat-card-content>
+                Easy
+            </mat-card-content>
+        </mat-card>
+        <mat-card (click)="level = _LEVEL.MEDIUM; initVariables();" class="card_menu">
+            <mat-card-content>
+                Medium
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card (click)="level = _LEVEL.HARD; initVariables();" class="card_menu">
+            <mat-card-content>
+                Hard
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card (click)="level = _LEVEL.CUSTOM; initVariables();" class="card_menu">
+            <mat-card-content>
+                Custom
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <br />
+
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div id="snake_game">
                 <div *ngFor="let box of size_height; index as y; trackBy: trackByFn">
-                    <app-game-area-line [size_width]="size_width" [y]="y" [direction]="direction" [snakeCoordinates]="snakeCoordinates"
-                        [foodCoordinates]="foodCoordinates" class="line"></app-game-area-line>
+                    <app-game-area-line [size_width]="size_width" [y]="y" [direction]="direction"
+                        [snakeCoordinates]="snakeCoordinates" [foodCoordinates]="foodCoordinates" class="line">
+                    </app-game-area-line>
                 </div>
             </div>
-            <button *ngIf="canShowSpecificButton(0)" (click)="pauseGame()" mat-fab color="primary">
-                <mat-icon>Pause</mat-icon>
-            </button>
-            <button *ngIf="canShowSpecificButton(1)" (click)="beginGame()" mat-fab color="primary">
-                <mat-icon>Begin</mat-icon>
-            </button>
         </div>
-
-        <div class="col-md-2">
-<!--              <div *ngFor="let coordSnake of snakeCoordinates">
-                <p>X : {{coordSnake.x}} / Y : {{coordSnake.y}} / Horizontal : {{coordSnake.horizontal}}</p>
-            </div> -->
-            <p>Your score is : {{score}}</p>
+        <div class="col-md-3">
+            <app-lateral-panel [state]="state" [score]="score" [level]="level" (beginStopGame)="beginStopGame($event)">
+            </app-lateral-panel>
         </div>
     </div>
 </div>
