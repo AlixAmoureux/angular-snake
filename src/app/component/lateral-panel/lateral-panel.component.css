@@ -5,14 +5,26 @@
     color : white;
 }
 
-.card_panel span
+.card_panel
 {
     width: max-content;
+    font-family: 'Akronim';
+    font-size: 20px !important;
+}
+
+mat-card-content
+{
+    font-size: 20px !important;
 }
 
 .card_panel mat-card-title
 {
     text-align: center;
+}
+
+.card_panel mat-card-header
+{
+    justify-content: center;
 }
 
 .card_menu
@@ -22,4 +34,10 @@
     background-color: rgb(7, 6, 6);
     margin-bottom: 20px;
     opacity: 0.5;
+}
+
+#allowed
+{
+    color : red;
+    font-weight: bold;
 }

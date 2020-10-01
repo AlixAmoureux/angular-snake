@@ -3,8 +3,11 @@
 }
 
 #snake_game {
-    background-image: url("./../../../assets/img/nature.jpg");
     width: fit-content;
+    opacity: 0.8;
+    border: 3px solid black;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #my_container {
@@ -15,8 +18,7 @@
     display: flex;
 }
 
-.card_menu
-{
+.card_menu {
     margin: 10px;
     width: 25%;
     background-color: rgb(7, 6, 6);
@@ -24,15 +26,13 @@
     opacity: 0.5;
 }
 
-.card_flex .card_menu:hover
-{
-    cursor : pointer;
+.card_flex .card_menu:hover {
+    cursor: pointer;
     background-color: rgb(131, 153, 226);
 }
 
-.card_flex mat-card-header, .card_flex mat-card-content
-{
+.card_flex mat-card-header, .card_flex mat-card-content {
     text-align: center;
-    color : white;
+    color: white;
     font-weight: bold;
 }

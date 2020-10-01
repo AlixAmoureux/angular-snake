@@ -41,6 +41,8 @@ html, body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-image: url("./assets/img/nature.jpg");
+    overflow-y: hidden;
 }
 
 h1
@@ -48,10 +50,4 @@ h1
     margin-top: 20px !important;
     text-align: center;
     color : white;
-}
-
-body
-{
-    background-color: rgb(218, 111, 111);
-    overflow-y: hidden;
 }

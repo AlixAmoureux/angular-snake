@@ -21,12 +21,28 @@ export class GetMainInfoService {
 
   public getSize(level: LEVEL): number[] {
     if (level === LEVEL.EASY)
-      return [50, 30];
+      return [30, 25];
     else if (level === LEVEL.MEDIUM)
-      return [35, 25];
+      return [25, 20];
     else if (level === LEVEL.HARD)
-      return [30, 20];
+      return [25, 20];
     else
       return [50, 30];
+  }
+
+  public canCrossBorder(level: LEVEL): boolean {
+    if (level === LEVEL.EASY)
+      return true;
+    else
+      return false;
+  }
+
+  public getWallNumber(level: LEVEL): number {
+    if (level === LEVEL.MEDIUM)
+      return 5;
+    else if (level === LEVEL.HARD)
+      return 10;
+    else
+      return 0;
   }
 }

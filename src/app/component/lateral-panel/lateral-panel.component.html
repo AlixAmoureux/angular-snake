@@ -15,39 +15,47 @@
 <br /><br />
 <mat-card class="card_menu card_panel">
     <mat-card-header>
-        <mat-card-title *ngIf="_level == _LEVEL.EASY">Easy</mat-card-title>
-        <mat-card-title *ngIf="_level == _LEVEL.MEDIUM">Medium</mat-card-title>
-        <mat-card-title *ngIf="_level == _LEVEL.HARD">Hard</mat-card-title>
+        <mat-card-title *ngIf="_level == _LEVEL.EASY">EASY</mat-card-title>
+        <mat-card-title *ngIf="_level == _LEVEL.MEDIUM">MEDIUM</mat-card-title>
+        <mat-card-title *ngIf="_level == _LEVEL.HARD">HARD</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <div class="row">
             <div class="col-md-6">
-                <span>Eaten itself error</span><br>
-                <span>Border error</span><br>
-                <span>Wall error</span><br>
-                <span>Speed</span><br>
-                <span>Size</span><br>
+                <span> </span><br/>
+                <span>EATING ITSELF</span><br>
+                <span>CROSS BORDER</span><br>
+                <span>CROSS WALL</span><br><br />
+                <span>SPEED</span><br>
+                <span>SIZE</span><br>
+                <span>NUMBER OF WALL</span>
             </div>
             <div *ngIf="_level == _LEVEL.EASY" class="col-md-6">
-                <span>Yes</span><br />
-                <span>No</span><br />
-                <span>No</span><br />
-                <span>180 ms</span><br />
-                <span>50 * 30</span><br />
+                <span id="allowed">ALLOWED ?</span><br/>
+                <span>NO</span><br />
+                <span>YES</span><br />
+                <span>NO WALL</span><br /><br />
+                <span>{{getMainInfoService.getSpeed(_LEVEL.EASY)}} MS</span><br />
+                <span>{{getMainInfoService.getSize(_LEVEL.EASY)[0]}} * {{getMainInfoService.getSize(_LEVEL.EASY)[1]}}</span><br />
+                <span>0</span>
             </div>
             <div *ngIf="_level == _LEVEL.MEDIUM" class="col-md-6">
-                <span>Yes</span><br />
-                <span>Yes</span><br />
-                <span>No</span><br />
-                <span>150 ms</span><br />
-                <span>35 * 25</span><br />
+                <span id="allowed">ALLOWED ?</span><br/>
+                <span>NO</span><br />
+                <span>NO</span><br />
+                <span>NO WALL</span><br /><br />
+                <span>{{getMainInfoService.getSpeed(_LEVEL.MEDIUM)}} MS</span><br />
+                <span>{{getMainInfoService.getSize(_LEVEL.MEDIUM)[0]}} * {{getMainInfoService.getSize(_LEVEL.MEDIUM)[1]}}</span><br />
+                <span>{{getMainInfoService.getWallNumber(_LEVEL.MEDIUM)}} </span>
             </div>
             <div *ngIf="_level == _LEVEL.HARD" class="col-md-6">
-                <span>Yes</span><br />
-                <span>Yes</span><br />
-                <span>Yes</span><br />
-                <span>120 ms</span><br />
-                <span>30 * 20</span><br />
+                <span id="allowed">ALLOWED ?</span><br/>
+                <span>NO</span><br />
+                <span>NO</span><br />
+                <span>NO</span><br /><br />
+                <span>{{getMainInfoService.getSpeed(_LEVEL.HARD)}} MS</span><br />
+                <span>{{getMainInfoService.getSize(_LEVEL.HARD)[0]}} * {{getMainInfoService.getSize(_LEVEL.HARD)[1]}}</span><br />
+                <span>{{getMainInfoService.getWallNumber(_LEVEL.HARD)}} </span>
             </div>
         </div>
     </mat-card-content>

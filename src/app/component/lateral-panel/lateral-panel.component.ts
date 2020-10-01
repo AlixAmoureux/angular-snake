@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { STATE } from '../../object/State';
 import { LEVEL } from '../../object/Level';
+import { GetMainInfoService } from '../../service/get-main-info.service';
 
 @Component({
   selector: 'app-lateral-panel',
@@ -33,7 +34,7 @@ export class LateralPanelComponent implements OnInit {
   _LEVEL = LEVEL;
   @Output() beginStopGame = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(public getMainInfoService: GetMainInfoService) { }
 
   ngOnInit(): void {
   }

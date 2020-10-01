@@ -1,23 +1,23 @@
 <div id="my_container">
     <div class="card_flex">
-        <mat-card (click)="level = _LEVEL.EASY; initVariables();" class="card_menu">
+        <mat-card (click)="level = _LEVEL.EASY; stopGame();" class="card_menu">
             <mat-card-content>
                 Easy
             </mat-card-content>
         </mat-card>
-        <mat-card (click)="level = _LEVEL.MEDIUM; initVariables();" class="card_menu">
+        <mat-card (click)="level = _LEVEL.MEDIUM; stopGame();" class="card_menu">
             <mat-card-content>
                 Medium
             </mat-card-content>
         </mat-card>
 
-        <mat-card (click)="level = _LEVEL.HARD; initVariables();" class="card_menu">
+        <mat-card (click)="level = _LEVEL.HARD; stopGame();" class="card_menu">
             <mat-card-content>
                 Hard
             </mat-card-content>
         </mat-card>
 
-        <mat-card (click)="level = _LEVEL.CUSTOM; initVariables();" class="card_menu">
+        <mat-card (click)="level = _LEVEL.CUSTOM; stopGame();" class="card_menu">
             <mat-card-content>
                 Custom
             </mat-card-content>
@@ -30,7 +30,7 @@
             <div id="snake_game">
                 <div *ngFor="let box of size_height; index as y; trackBy: trackByFn">
                     <app-game-area-line [size_width]="size_width" [y]="y" [direction]="direction"
-                        [snakeCoordinates]="snakeCoordinates" [foodCoordinates]="foodCoordinates" class="line">
+                        [snakeCoordinates]="snakeCoordinates" [foodCoordinates]="foodCoordinates" [wallCoordinates]="wallCoordinates" class="line">
                     </app-game-area-line>
                 </div>
             </div>

@@ -12,7 +12,7 @@ export class GameAreaLineComponent implements OnInit {
   @Input("size_width") size_width: number;
 
   public Direction = DIRECTION;
-  
+
   public _y: number;
   @Input("y")
   get y(): number {
@@ -49,6 +49,15 @@ export class GameAreaLineComponent implements OnInit {
     this._foodCoordinates = tmpFoodPos;
   }
 
+  private _wallCoordinates: CELL[];
+  @Input("wallCoordinates")
+  get wallCoordinates(): CELL[] {
+    return this._wallCoordinates;
+  }
+  set wallCoordinates(tmpWallPos) {
+    this._wallCoordinates = tmpWallPos;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
@@ -60,6 +69,17 @@ export class GameAreaLineComponent implements OnInit {
     return false;
   }
 
+  displayWall(x: number): boolean {
+    let display: boolean = false;
+    if (this._wallCoordinates) {
+      this._wallCoordinates.forEach((wallPos: CELL, index: number) => {
+        if ((wallPos.x === x) && (wallPos.y === this._y))
+          display = true;
+      });
+    }
+    return display;
+  }
+
   displaySnakeHead(x: number): boolean {
     if ((this._snakePos[0].x === x) && (this._snakePos[0].y === this._y))
       return true;
@@ -68,7 +88,7 @@ export class GameAreaLineComponent implements OnInit {
 
   displaySnakeBody(x: number): boolean {
     let display: boolean = false;
-    this._snakePos.forEach((snakePos : CELL, index : number) => {
+    this._snakePos.forEach((snakePos: CELL, index: number) => {
       if ((index > 0) && ((snakePos.x === x) && (snakePos.y === this._y)))
         display = true;
     });
@@ -80,11 +100,4 @@ export class GameAreaLineComponent implements OnInit {
       return true;
     return false;
   }
-
-/*   displayHorizontal(x : number)
-  {
-    let cell : CELL  = this._snakePos.find(tmpCell => ((tmpCell.x === x) && (tmpCell.y === this._y)));
-//    console.log(cell);
-    return (cell.horizontal);
-  } */
 }
