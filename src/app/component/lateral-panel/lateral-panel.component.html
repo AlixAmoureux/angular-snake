@@ -4,12 +4,10 @@
             aria-label="Pause">play_circle_outline</mat-icon>
         <mat-icon class="icon_50px" *ngIf="canShowSpecificButton(0)" (click)="beginOrStopGame(0)" aria-hidden="false"
             aria-label="Begin">stop</mat-icon>
+            <p>(Or press 'space' key)</p>
     </div>
-    <!--              <div *ngFor="let coordSnake of snakeCoordinates">
-    <p>X : {{coordSnake.x}} / Y : {{coordSnake.y}} / Horizontal : {{coordSnake.horizontal}}</p>
-</div> -->
     <div class="col-md-6">
-        <p class="font-weight-bold">Score : {{_score}}</p>
+        <p class="font-weight-bold score">SCORE : {{_score}}</p>
     </div>
 </div>
 <br /><br />
@@ -23,16 +21,14 @@
         <div class="row">
             <div class="col-md-6">
                 <span> </span><br/>
-                <span>EATING ITSELF</span><br>
                 <span>CROSS BORDER</span><br>
                 <span>CROSS WALL</span><br><br />
                 <span>SPEED</span><br>
                 <span>SIZE</span><br>
-                <span>NUMBER OF WALL</span>
+                <span>NUMBER OF WALLS</span>
             </div>
             <div *ngIf="_level == _LEVEL.EASY" class="col-md-6">
-                <span id="allowed">ALLOWED ?</span><br/>
-                <span>NO</span><br />
+                <span id="allowed">ALLOWED ?</span><br/>                
                 <span>YES</span><br />
                 <span>NO WALL</span><br /><br />
                 <span>{{getMainInfoService.getSpeed(_LEVEL.EASY)}} MS</span><br />
@@ -40,8 +36,7 @@
                 <span>0</span>
             </div>
             <div *ngIf="_level == _LEVEL.MEDIUM" class="col-md-6">
-                <span id="allowed">ALLOWED ?</span><br/>
-                <span>NO</span><br />
+                <span id="allowed">ALLOWED ?</span><br/>                
                 <span>NO</span><br />
                 <span>NO WALL</span><br /><br />
                 <span>{{getMainInfoService.getSpeed(_LEVEL.MEDIUM)}} MS</span><br />
@@ -49,8 +44,7 @@
                 <span>{{getMainInfoService.getWallNumber(_LEVEL.MEDIUM)}} </span>
             </div>
             <div *ngIf="_level == _LEVEL.HARD" class="col-md-6">
-                <span id="allowed">ALLOWED ?</span><br/>
-                <span>NO</span><br />
+                <span id="allowed">ALLOWED ?</span><br/>                
                 <span>NO</span><br />
                 <span>NO</span><br /><br />
                 <span>{{getMainInfoService.getSpeed(_LEVEL.HARD)}} MS</span><br />

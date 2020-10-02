@@ -21,13 +21,13 @@ export class GetMainInfoService {
 
   public getSize(level: LEVEL): number[] {
     if (level === LEVEL.EASY)
-      return [30, 25];
+      return [28, 22];
     else if (level === LEVEL.MEDIUM)
       return [25, 20];
     else if (level === LEVEL.HARD)
       return [25, 20];
     else
-      return [50, 30];
+      return [25, 20];
   }
 
   public canCrossBorder(level: LEVEL): boolean {

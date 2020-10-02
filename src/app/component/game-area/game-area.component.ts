@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { interval } from 'rxjs';
 import { CELL } from '../../object/Cell';
 import { KEY_CODE } from '../../object/KeyCode';
@@ -9,6 +9,8 @@ import { GetMainInfoService } from '../../service/get-main-info.service';
 import { ErrorManagementService } from '../../service/error-management.service';
 import { AddNewItemService } from '../../service/add-new-item.service';
 import { MoveSnakeService } from '../../service/move-snake.service';
+import { PopupInfoComponent } from '../popup-info/popup-info.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-game-area',
@@ -30,10 +32,11 @@ export class GameAreaComponent implements OnInit {
   public level: LEVEL = LEVEL.EASY;
   public speed: number = 180;
   public canCrossBorder: boolean;
+  public dialogRef;
   _LEVEL = LEVEL;
 
   constructor(public getMainInfoService: GetMainInfoService, public errorManagementService: ErrorManagementService, public addNewItemService: AddNewItemService,
-    public moveSnakeService: MoveSnakeService) {
+    public moveSnakeService: MoveSnakeService, public dialog: MatDialog) {
   }
 
   ngOnDestroy() {
@@ -47,10 +50,11 @@ export class GameAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.initVariables();
+    this.openPopup();
   }
 
   initVariables() {
-    this.snakeCoordinates = [{ x: 0, y: 0}];
+    this.snakeCoordinates = [{ x: 0, y: 0 }];
     this.wallCoordinates = [];
     this.size_width = new Array<number>(this.getMainInfoService.getSize(this.level)[0]);
     this.size_height = new Array<number>(this.getMainInfoService.getSize(this.level)[1]);
@@ -156,7 +160,8 @@ export class GameAreaComponent implements OnInit {
         }
         this.moveSnakeService.moveSnakeBody(snakeHead, this.snakeCoordinates);
         this.moveSnakeService.moveSnakeHead(this.direction, this.snakeCoordinates);
-        if (!this.errorManagementService.manageBorderError(this.size_width, this.size_height, this.snakeCoordinates, this.direction, this.canCrossBorder))
+        if ((!this.errorManagementService.manageBorderError(this.size_width, this.size_height, this.snakeCoordinates, this.direction, this.canCrossBorder)) ||
+          (this.errorManagementService.isSnakeCrossingAWall(snakeHead, this.wallCoordinates)))
           this.stopGame();
         if (this.isSnakeEatingFood()) {
           this.addNewItemService.increaseSnakeSize(this.direction, this.snakeCoordinates);
@@ -172,5 +177,21 @@ export class GameAreaComponent implements OnInit {
       this.stopGame();
     else
       this.beginGame();
+  }
+
+  openPopup() {
+    this.dialogRef = this.dialog.open(PopupInfoComponent, {
+      data : {level : this.level},
+      minWidth : '500px',
+      minHeight : '250px',
+      maxWidth : '1000px',
+      maxHeight : '500px',
+    });
+  }
+
+  changeLevel()
+  {
+    this.stopGame();
+    this.openPopup();
   }
 }

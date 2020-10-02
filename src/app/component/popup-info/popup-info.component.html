@@ -1,0 +1,50 @@
+<h1 id="popup_title" mat-dialog-title>Information</h1>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title *ngIf="data.level == _LEVEL.EASY">EASY</mat-card-title>
+        <mat-card-title *ngIf="data.level == _LEVEL.MEDIUM">MEDIUM</mat-card-title>
+        <mat-card-title *ngIf="data.level == _LEVEL.HARD">HARD</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="row">
+            <div class="col-md-6">
+                <span> </span><br />
+                <span>CROSS BORDER</span><br>
+                <span>CROSS WALL</span><br><br />
+                <span>SPEED</span><br>
+                <span>SIZE</span><br>
+                <span>NUMBER OF WALLS</span>
+            </div>
+            <div *ngIf="data.level === _LEVEL.EASY" class="col-md-6">
+                <span id="allowed">ALLOWED ?</span><br />
+                <span>YES</span><br />
+                <span>NO WALL</span><br /><br />
+                <span>{{getMainInfoService.getSpeed(_LEVEL.EASY)}} MS</span><br />
+                <span>{{getMainInfoService.getSize(_LEVEL.EASY)[0]}} *
+                    {{getMainInfoService.getSize(_LEVEL.EASY)[1]}}</span><br />
+                <span>0</span>
+            </div>
+            <div *ngIf="data.level == _LEVEL.MEDIUM" class="col-md-6">
+                <span id="allowed">ALLOWED ?</span><br />
+                <span>NO</span><br />
+                <span>NO WALL</span><br /><br />
+                <span>{{getMainInfoService.getSpeed(_LEVEL.MEDIUM)}} MS</span><br />
+                <span>{{getMainInfoService.getSize(_LEVEL.MEDIUM)[0]}} *
+                    {{getMainInfoService.getSize(_LEVEL.MEDIUM)[1]}}</span><br />
+                <span>{{getMainInfoService.getWallNumber(_LEVEL.MEDIUM)}} </span>
+            </div>
+            <div *ngIf="data.level == _LEVEL.HARD" class="col-md-6">
+                <span id="allowed">ALLOWED ?</span><br />                
+                <span>NO</span><br />
+                <span>NO</span><br /><br />
+                <span>{{getMainInfoService.getSpeed(_LEVEL.HARD)}} MS</span><br />
+                <span>{{getMainInfoService.getSize(_LEVEL.HARD)[0]}} *
+                    {{getMainInfoService.getSize(_LEVEL.HARD)[1]}}</span><br />
+                <span>{{getMainInfoService.getWallNumber(_LEVEL.HARD)}} </span>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<div mat-dialog-actions>
+    <button id="increase_font_size" mat-button mat-dialog-close type="button" class="btn btn-primary">Close</button>
+</div>

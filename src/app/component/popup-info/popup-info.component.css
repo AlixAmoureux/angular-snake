@@ -1,15 +1,12 @@
-.card_panel
+.card
 {
-    width: 90% !important;
+    width: 100% !important;
     text-align: left !important;
     color : white;
-}
-
-.card_panel
-{
-    width: max-content;
     font-family: 'Akronim';
     font-size: 20px !important;
+    background-color: rgb(7, 6, 6);
+    opacity: 0.5;
 }
 
 mat-card-content
@@ -17,23 +14,14 @@ mat-card-content
     font-size: 20px !important;
 }
 
-.card_panel mat-card-title
+.card mat-card-title
 {
     text-align: center;
 }
 
-.card_panel mat-card-header
+.card mat-card-header
 {
     justify-content: center;
-}
-
-.card_menu
-{
-    margin: 10px;
-    width: 25%;
-    background-color: rgb(7, 6, 6);
-    margin-bottom: 20px;
-    opacity: 0.5;
 }
 
 #allowed
@@ -45,4 +33,17 @@ mat-card-content
 .score
 {
     font-size: 30px;
+}
+
+#increase_font_size
+{
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+#popup_title
+{
+    font-size: 25px;
 }

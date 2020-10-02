@@ -13,7 +13,8 @@ import { MaterialModule } from './material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SnakeBodyComponent } from './component/box-snake-body/snake-body/snake-body.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LateralPanelComponent } from './component/lateral-panel/lateral-panel.component'; 
+import { LateralPanelComponent } from './component/lateral-panel/lateral-panel.component';
+import { PopupInfoComponent } from './component/popup-info/popup-info.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LateralPanelComponent } from './component/lateral-panel/lateral-panel.c
     BoxSnakeHeadComponent,
     SnakeBodyComponent,
     LateralPanelComponent,
+    PopupInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,10 @@ import { LateralPanelComponent } from './component/lateral-panel/lateral-panel.c
     NgbModule,
     BrowserAnimationsModule
   ],
+  entryComponents:
+    [
+      PopupInfoComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

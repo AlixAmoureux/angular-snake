@@ -1,25 +1,19 @@
 <div id="my_container">
     <div class="card_flex">
-        <mat-card (click)="level = _LEVEL.EASY; stopGame();" class="card_menu">
+        <mat-card (click)="level = _LEVEL.EASY; changeLevel()" class="card_menu">
             <mat-card-content>
                 Easy
             </mat-card-content>
         </mat-card>
-        <mat-card (click)="level = _LEVEL.MEDIUM; stopGame();" class="card_menu">
+        <mat-card (click)="level = _LEVEL.MEDIUM; changeLevel()" class="card_menu">
             <mat-card-content>
                 Medium
             </mat-card-content>
         </mat-card>
 
-        <mat-card (click)="level = _LEVEL.HARD; stopGame();" class="card_menu">
+        <mat-card (click)="level = _LEVEL.HARD; changeLevel()" class="card_menu">
             <mat-card-content>
                 Hard
-            </mat-card-content>
-        </mat-card>
-
-        <mat-card (click)="level = _LEVEL.CUSTOM; stopGame();" class="card_menu">
-            <mat-card-content>
-                Custom
             </mat-card-content>
         </mat-card>
     </div>
