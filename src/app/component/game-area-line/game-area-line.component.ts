@@ -9,12 +9,12 @@ import { DIRECTION } from '../../object/Direction';
 })
 export class GameAreaLineComponent implements OnInit {
 
-  @Input("size_width") size_width: number;
+  @Input('sizeWidth') sizeWidth: number;
 
   public Direction = DIRECTION;
 
-  public _y: number;
-  @Input("y")
+  private _y: number;
+  @Input('y')
   get y(): number {
     return this._y;
   }
@@ -23,7 +23,7 @@ export class GameAreaLineComponent implements OnInit {
   }
 
   public _direction: DIRECTION;
-  @Input("direction")
+  @Input('direction')
   get direction(): DIRECTION {
     return this._direction;
   }
@@ -32,7 +32,7 @@ export class GameAreaLineComponent implements OnInit {
   }
 
   private _snakePos: CELL[];
-  @Input("snakeCoordinates")
+  @Input('snakeCoordinates')
   get snakePos(): CELL[] {
     return this._snakePos;
   }
@@ -41,7 +41,7 @@ export class GameAreaLineComponent implements OnInit {
   }
 
   private _foodCoordinates: CELL;
-  @Input("foodCoordinates")
+  @Input('foodCoordinates')
   get foodCoordinates(): CELL {
     return this._foodCoordinates;
   }
@@ -50,7 +50,7 @@ export class GameAreaLineComponent implements OnInit {
   }
 
   private _wallCoordinates: CELL[];
-  @Input("wallCoordinates")
+  @Input('wallCoordinates')
   get wallCoordinates(): CELL[] {
     return this._wallCoordinates;
   }
@@ -63,41 +63,46 @@ export class GameAreaLineComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  displayFood(x: number): boolean {
-    if ((this._foodCoordinates.x === x) && (this._foodCoordinates.y === this._y))
+  displayFood(x: number) {
+    if ((this._foodCoordinates.x === x) && (this._foodCoordinates.y === this._y)) {
       return true;
+    }
     return false;
   }
 
-  displayWall(x: number): boolean {
-    let display: boolean = false;
+  displayWall(x: number) {
+    let display = false;
     if (this._wallCoordinates) {
-      this._wallCoordinates.forEach((wallPos: CELL, index: number) => {
-        if ((wallPos.x === x) && (wallPos.y === this._y))
+      this._wallCoordinates.forEach(function(wallPos: CELL, index: number){
+        if ((wallPos.x === x) && (wallPos.y === this._y)) {
           display = true;
-      });
+        }
+      }, this);
     }
     return display;
   }
 
-  displaySnakeHead(x: number): boolean {
-    if ((this._snakePos[0].x === x) && (this._snakePos[0].y === this._y))
+  displaySnakeHead(x: number) {
+    if ((this._snakePos[0].x === x) && (this._snakePos[0].y === this._y)) {
       return true;
+    }
     return false;
   }
 
-  displaySnakeBody(x: number): boolean {
-    let display: boolean = false;
-    this._snakePos.forEach((snakePos: CELL, index: number) => {
-      if ((index > 0) && ((snakePos.x === x) && (snakePos.y === this._y)))
+  displaySnakeBody(x: number) {
+    let display = false;
+    this._snakePos.forEach(function(snakePos: CELL, index: number){
+      if ((index > 0) && ((snakePos.x === x) && (snakePos.y === this._y))) {
         display = true;
-    });
+      }
+    }, this);
     return display;
   }
 
-  displayEmptyBox(x: number): boolean {
-    if (!this.displayFood(x) && !this.displaySnakeHead(x) && !this.displaySnakeBody(x))
+  displayEmptyBox(x: number) {
+    if (!this.displayFood(x) && !this.displaySnakeHead(x) && !this.displaySnakeBody(x)) {
       return true;
+    }
     return false;
   }
 }

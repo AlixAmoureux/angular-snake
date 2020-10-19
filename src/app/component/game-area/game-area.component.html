@@ -22,9 +22,10 @@
     <div class="row">
         <div class="col-md-9">
             <div id="snake_game">
-                <div *ngFor="let box of size_height; index as y; trackBy: trackByFn">
-                    <app-game-area-line [size_width]="size_width" [y]="y" [direction]="direction"
-                        [snakeCoordinates]="snakeCoordinates" [foodCoordinates]="foodCoordinates" [wallCoordinates]="wallCoordinates" class="line">
+                <div *ngFor="let box of sizeHeight; index as y; trackBy: trackByFn">
+                    <app-game-area-line [sizeWidth]="sizeWidth" [y]="y" [direction]="direction"
+                        [snakeCoordinates]="snakeCoordinates" [foodCoordinates]="foodCoordinates"
+                        [wallCoordinates]="wallCoordinates" class="line">
                     </app-game-area-line>
                 </div>
             </div>

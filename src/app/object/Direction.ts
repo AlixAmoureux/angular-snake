@@ -3,4 +3,4 @@ export enum DIRECTION {
     TOP = 1,
     RIGHT = 2,
     BOTTOM = 3
-}  
+}

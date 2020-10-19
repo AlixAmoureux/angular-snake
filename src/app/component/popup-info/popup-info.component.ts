@@ -12,7 +12,7 @@ export class PopupInfoComponent implements OnInit {
 
   _LEVEL = LEVEL;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public getMainInfoService : GetMainInfoService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public getMainInfoService: GetMainInfoService) { }
 
   ngOnInit(): void {
   }

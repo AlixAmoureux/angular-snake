@@ -1,8 +1,7 @@
 export enum KEY_CODE {
-    LEFT_ARROW = 37,
-    TOP_ARROW = 38,
-    RIGHT_ARROW = 39,
-    BOTTOM_ARROW = 40,
-    ESCAPE = 27,
-    SPACE = 32
-  }
+  LEFT_ARROW = 'ArrowLeft',
+  TOP_ARROW = 'ArrowUp',
+  RIGHT_ARROW = 'ArrowRight',
+  BOTTOM_ARROW = 'ArrowDown',
+  SPACE = ' '
+}

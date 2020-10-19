@@ -40,19 +40,20 @@ export class LateralPanelComponent implements OnInit {
   }
 
   /**
- * Allows to show the "Begin" button or the "Pause" button
- * 
- * @param button 
- */
+   * Allows to show the "Begin" button or the "Pause" button
+   *
+   * @param button : number of the button to show
+   */
   canShowSpecificButton(button: number) {
-    if (button === this._state)
+    if (button === this._state) {
       return true;
+    }
     return false;
   }
 
   /**
    * Change the status of the game (begin or end)
-   * 
+   *
    * @param gameStatus 0 = stop, 1 = begin
    */
   beginOrStopGame(gameStatus: number) {

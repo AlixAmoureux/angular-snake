@@ -9,40 +9,53 @@ export class GetMainInfoService {
   constructor() { }
 
   public getSpeed(level: LEVEL): number {
-    if (level === LEVEL.EASY)
+    if (level === LEVEL.EASY) {
       return 180;
-    else if (level === LEVEL.MEDIUM)
+    }
+    else if (level === LEVEL.MEDIUM) {
       return 150;
-    else if (level === LEVEL.HARD)
+    }
+    else if (level === LEVEL.HARD) {
       return 120;
-    else
+    }
+    else {
       return 180;
+    }
   }
 
   public getSize(level: LEVEL): number[] {
-    if (level === LEVEL.EASY)
+    if (level === LEVEL.EASY) {
       return [28, 22];
-    else if (level === LEVEL.MEDIUM)
+    }
+    else if (level === LEVEL.MEDIUM) {
       return [25, 20];
-    else if (level === LEVEL.HARD)
+    }
+    else if (level === LEVEL.HARD) {
       return [25, 20];
-    else
+    }
+    else {
       return [25, 20];
+    }
   }
 
   public canCrossBorder(level: LEVEL): boolean {
-    if (level === LEVEL.EASY)
+    if (level === LEVEL.EASY) {
       return true;
-    else
+    }
+    else {
       return false;
+    }
   }
 
   public getWallNumber(level: LEVEL): number {
-    if (level === LEVEL.MEDIUM)
+    if (level === LEVEL.MEDIUM) {
       return 5;
-    else if (level === LEVEL.HARD)
+    }
+    else if (level === LEVEL.HARD) {
       return 10;
-    else
+    }
+    else {
       return 0;
+    }
   }
 }

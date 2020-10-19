@@ -10,7 +10,7 @@ export class BoxSnakeBodyComponent implements OnInit {
 
   DIRECTION = DIRECTION;
   public _direction: DIRECTION;
-  @Input("direction")
+  @Input('direction')
   get direction(): DIRECTION {
     return this._direction;
   }
