@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { PopupInfoComponent } from './popup-info.component';
 
@@ -17,9 +18,5 @@ describe('PopupInfoComponent', () => {
     fixture = TestBed.createComponent(PopupInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

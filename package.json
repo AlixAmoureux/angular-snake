@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Snake using Angular",
   "scripts": {
-    "ng": "ng serve",
+    "ng serve": "ng serve",
     "start": "node server.js",
     "build": "webpack",
-    "test": "ng test",
+    "test": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "heroku-postbuild": "ng build --prod"
