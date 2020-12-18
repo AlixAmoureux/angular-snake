@@ -13,4 +13,4 @@ Bootstrap 4.x
 Express 4.x  
 
 # Try
-https://angular-advanced-snake.herokuapp.com/
+https://snake-angular.herokuapp.com/
